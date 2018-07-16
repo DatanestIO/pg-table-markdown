@@ -2,7 +2,9 @@ A command line tool that generates Markdown documentation for Postgres tables in
 
 ## Installation
 ```
-pip install pg-table-markdown
+git clone https://github.com/DatanestIO/pg-table-markdown
+cd <repo_path>
+python setup.py install
 ```
 
 _Note:_ Since `pg-table-markdown` is intended to connect to Postgres databases, it has a dependedncy on `psycopg2`. However, `psycopg2` includes compiled C modules, and therefore may require compiling from source if it's not already installed. Installing via `pip` will require `python-dev` and `libpq-dev`. `psycopg2` maintainers generally recommend [installing from binary](http://initd.org/psycopg/docs/install.html#install-from-package) instead.
@@ -35,13 +37,13 @@ The generated Markdown details the column name, type, and default value for each
 
 ### app_users 
 
-Column | Type | Default | Nullable 
---- | --- | --- | --- 
-id | integer | nextval('app_users_id_seq'::regclass) | NO 
-email | character varying | None | NO 
-password | character varying | None | YES 
-is_active | boolean | true | YES 
-is_admin | boolean | false | YES 
+Column | Type | Default | Nullable | Description
+--- | --- | --- | --- | --- 
+id | integer | nextval('app_users_id_seq'::regclass) | NO | Unique ID
+email | character varying | None | NO | User Email
+password | character varying | None | YES | User Password
+is_active | boolean | true | YES | Flag User still active
+is_admin | boolean | false | YES | Flag User still admin
 
 
 ## Run tests with Docker Compose
