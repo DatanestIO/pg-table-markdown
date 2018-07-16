@@ -10,7 +10,7 @@ def build_schema_query(table_schema):
     		        SELECT pg_catalog.col_description(c.oid, a.ordinal_position::int)
         	        FROM pg_catalog.pg_class c
         	        WHERE c.oid     = (SELECT a.table_name::regclass::oid) and c.relname = a.table_name
-    	        ) as desctiption
+    	        ) as description
     FROM        information_schema.columns a
     WHERE       table_schema = '{0}'
     ORDER BY    table_name,
