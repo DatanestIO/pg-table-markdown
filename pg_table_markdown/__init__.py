@@ -10,6 +10,16 @@ TABLE_HEADER = 'Column | Type | Default | Nullable | Description \n'
 TABLE_DIVIDER = '--- | --- | --- | --- | --- \n'
 TABLE_ROW = '{column_name} | {data_type} | {column_default} | {is_nullable} | {description} \n'
 TABLE_ROW_WITH_MAXLENGTH = '{column_name} | {data_type}({character_maximum_length}) | {column_default} | {is_nullable} | {description} \n'
+FOOTER = """
+
+
+
+
+------
+
+!!! info
+    **Last Modified on** <script type="text/javascript"> document.write(document.lastModified); </script>\n
+"""
 
 @click.command()
 @click.option('--database_url', prompt=True, help='Database connection URL')
@@ -43,3 +53,4 @@ def cli(database_url, table_schema, output_file, max_length):
                 else:
                     f.write(TABLE_ROW.format(**column))
             f.write('\n')
+        f.write(FOOTER)
